@@ -12,19 +12,19 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
-// routes
-const router = require("./routes/Router.js")
-
-app.use(router)
-
 // Solve CORS
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }))
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 // Upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
 
-// Upload directory
+// db connection
 require("./config/db.js")
+
+// routes
+const router = require("./routes/Router.js")
+
+app.use(router)
 
 app.listen(port, () => {
     console.log(`App rodando na porta ${port}`)
