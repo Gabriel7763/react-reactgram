@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 // Solve CORS
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
+app.use(cors({ origin: 'gabnu-reactgram.netlify.app', credentials: true }))
 
 // Upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
